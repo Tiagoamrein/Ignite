@@ -1,10 +1,10 @@
-import { Text, View } from "react-native"
+import {Home} from "./src/screens/home"
+
+
 export default function App(){
 
   return(
-    <View>
-    <Text>Criando componentes</Text>
-    <Text>Criando componentes</Text>
-    </View>
+    <Home/>
   )
 }
+
