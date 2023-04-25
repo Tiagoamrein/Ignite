@@ -4,8 +4,8 @@ import { StyleSheet } from "react-native"
   container:{
     flex:1,
     backgroundColor: '#363636',
-    padding: 24
-
+    padding: 24,
+    
   },
   eventName:{
     color: 'white',
@@ -34,7 +34,7 @@ import { StyleSheet } from "react-native"
     fontSize:20
   },
   button:{
-    backgroundColor: '#31cf67',
+    backgroundColor: '#31CF67',
     width: 40,
     height: 40,
     borderRadius: 5,
@@ -47,6 +47,7 @@ import { StyleSheet } from "react-native"
     alignItems: 'center',
     marginTop: 10,
     gap: 10,
+    marginBottom: 10,
   }
 
 })
