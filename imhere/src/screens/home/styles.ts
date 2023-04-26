@@ -47,7 +47,12 @@ import { StyleSheet } from "react-native"
     alignItems: 'center',
     marginTop: 10,
     gap: 10,
-    marginBottom: 10,
+    marginBottom: 40,
+  },
+  empty: {
+    color: '#FFF',
+    fontSize: 14,
+    textAlign: 'center'
   }
 
 })
