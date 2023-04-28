@@ -1,48 +1,71 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, FlatList,Alert,  } from "react-native"
 import { styles } from "./styles"
 import { Participant } from "../../components/Participant"
+import React, {useState} from "react"
 
 
-function handlerParticipantAdd(){
-  console.log("participant add")
-}
 
-function handlerParticipantRemove(){
-  console.log("participant remove")
-}
+
 export function Home(){
-  const participant = ['Tiago', 'Pedro', 'Mateus', 'man', 'Fare', 'Test', 'Function','ola','outro']
+  const [participant, SetParticipant]  = useState <string[]>([])
+  const [participantName, SetParticipantName]= useState('')
+
+  function handlerParticipantAdd(){
+    if(participant.includes('Tiago')){
+      return Alert.alert('Participante existe', 'Ja existe o participante na lista')
+    }
+    SetParticipant(prevState=> [...prevState, participantName])
+    SetParticipantName('')
+    }
+    
+    function handlerParticipantRemove(name: string){
+      
+      Alert.alert("Remover", `Remover o participante ${name}?`, [
+        {
+          text: 'Sim',
+          onPress:()=> SetParticipant(prevState=> prevState.filter(p=> p!==name))
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        }
+      ])
+    }
+
+
   return(
     <View style={styles.container}>
-    <Text style={styles.eventName}>Criando app react native</Text>
+    <Text style={styles.eventName}>Nome do Evento</Text>
     <Text style={styles.eventeDate}>Sexta, 21 de abril de 2023</Text>
     <View style={styles.form}>
     <TextInput 
     style={styles.input}
     placeholder="Nome do participante"
     placeholderTextColor="#ffffff"
+    onChangeText={SetParticipantName}
+     value={participantName}
     />
     <TouchableOpacity style={styles.button} onPress={handlerParticipantAdd}>
       <Text style={styles.buttonText}>+</Text>
     </TouchableOpacity></View>
 
     <FlatList  
-    data={[]}
+    data={participant}
     keyExtractor={item=> item}
     renderItem={({item})=> (
     <Participant 
     name={item}
     key={item}
-    onRemove={handlerParticipantRemove}
+    onRemove={() => handlerParticipantRemove(item)}
+   
     />
     )}
     ListEmptyComponent={()=>{
       return(
-        
           <Text style={styles.empty}>Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.</Text>
-        
       )
     }}
+    showsVerticalScrollIndicator ={false}
     />
     
     </View>
