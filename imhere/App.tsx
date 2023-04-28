@@ -6,7 +6,7 @@ export default function App(){
 
   return(
     <>
-    <StatusBar barStyle="default"  />
+    <StatusBar barStyle="light-content" translucent={true} backgroundColor={'#363636'} />
     <Home/>
     </>
   )

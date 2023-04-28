@@ -14,6 +14,12 @@ export function Home(){
     if(participant.includes('Tiago')){
       return Alert.alert('Participante existe', 'Ja existe o participante na lista')
     }
+    
+    if(participantName.length==0){
+      return Alert.alert('Informe o nome do participante')
+    }
+
+    
     SetParticipant(prevState=> [...prevState, participantName])
     SetParticipantName('')
     }
